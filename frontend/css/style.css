@@ -271,3 +271,24 @@ section {
     gap: 0.7rem;
     font-size: 1.1rem;
 }
+.project-card .card-image {
+    width: 100%; 
+    height: 180px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+    margin-bottom: 1rem; 
+}
+.hero-video {
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.hero-video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
