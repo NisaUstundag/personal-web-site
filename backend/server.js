@@ -6,14 +6,15 @@ const path = require('path'); // Dosya yolları ile çalışmak için
 
 // 2. Express uygulamasını oluşturuyoruz
 const app = express();
-const PORT = 3000; // Sunucumuz bu portta çalışacak
+
+// DEĞİŞİKLİK BURADA: Port'u Render'ın istediği gibi dinamik hale getiriyoruz
+const PORT = process.env.PORT || 3000;
 
 // 3. Gerekli ara yazılımları (middleware) kullanıyoruz
 app.use(cors()); // Frontend'den gelen isteklere izin ver (ÇOK ÖNEMLİ)
 
 // Bu satır, backend sunucusunun, ../frontend klasöründeki dosyaları
 // sanki kendi dosyalarıymış gibi sunmasını sağlar.
-// Yani tarayıcıya localhost:3000 yazdığımızda index.html'i gösterecek.
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // 4. API Endpoint'imizi (İstek Atacağımız Adres) oluşturuyoruz
@@ -51,5 +52,6 @@ app.get('/api/update-views', (req, res) => {
 
 // 5. Sunucuyu dinlemeye başlıyoruz
 app.listen(PORT, () => {
-    console.log(`Harika! Sunucu http://localhost:${PORT} adresinde çalışıyor.`);
+    // Bu log mesajı hem Render'da hem kendi bilgisayarında doğru portu gösterecek
+    console.log(`Sunucu ${PORT} portunda başarıyla başlatıldı.`);
 });
