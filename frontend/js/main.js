@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (viewCounterElement) {
         const getViews = async () => {
             try {
-                const response = await fetch('http://localhost:3000/api/update-views');
+                const response = await fetch('/api/update-views');
                 
                 if (!response.ok) {
                     throw new Error('Sunucudan veri alınamadı!');
